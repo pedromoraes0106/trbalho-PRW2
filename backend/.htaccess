@@ -1,0 +1,15 @@
+Options +FollowSymLinks
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^usuarios/([0-9]+) usuarios.php?id=$1 [L,QSA]
+RewriteRule ^produtos/([0-9]+) produtos.php?id=$1 [L,QSA]
+
+RewriteRule ^compras/? compras.php [L,QSA]
+RewriteRule ^usuarios/? usuarios.php [L,QSA]
+RewriteRule ^produtos/? produtos.php [L,QSA]
+
+RewriteRule ^.* index.php [L,QSA]
