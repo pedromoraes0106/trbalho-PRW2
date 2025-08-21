@@ -7,6 +7,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteRule ^usuarios/([0-9]+) usuarios.php?id=$1 [L,QSA]
 RewriteRule ^produtos/([0-9]+) produtos.php?id=$1 [L,QSA]
+RewriteRule ^compras/([0-9]+)/([0-9]+) compras.php?id_produto=$1&id_usuario=$2 [L,QSA]
 
 RewriteRule ^compras/? compras.php [L,QSA]
 RewriteRule ^usuarios/? usuarios.php [L,QSA]

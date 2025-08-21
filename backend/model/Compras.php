@@ -32,13 +32,13 @@ class Compras
         }
     }
 
-    public static function remove($id)
+    public static function remove($id_produto, $id_usuario)
     {
         try {
             $conexao = Conexao::getConexao();
 
-            $stmt = $conexao->prepare("DELETE FROM compras WHERE id = ?");
-            $stmt->execute([$id]);
+            $stmt = $conexao->prepare("DELETE FROM compras WHERE id_usuario = ? AND id_produto = ?");
+            $stmt->execute([$id_usuario, $id_produto]);
 
             return $stmt->rowCount();
         } catch (Exception $e) {

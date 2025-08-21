@@ -19,6 +19,18 @@ class Produtos
         }
     }
 
+    public static function editar($id, $nome, $preco)
+    {
+        try {
+            $conexao = Conexao::getConexao();
+            $stmt = $conexao->prepare("UPDATE produtos SET nome = ?, preco = ? WHERE id = ?");
+            $stmt->execute([$nome, $preco, $id]);
+            return $stmt->rowCount();
+        } catch (Exception $e) {
+            output(500, ["msg" => $e->getMessage()]);
+        }
+    }
+
     public static function existe_by_id($id)
     {
         try {
@@ -66,6 +78,19 @@ class Produtos
             $conexao = Conexao::getConexao();
             $stmt = $conexao->prepare("SELECT COUNT(*) as qtde FROM produtos WHERE nome = ?");
             $stmt->execute([$nome]);
+
+            return $stmt->fetchColumn();
+        } catch (Exception $e) {
+            output(500, ["msg" => $e->getMessage()]);
+        }
+    }
+
+    public static function existe_by_nome_notId($nome, $id)
+    {
+        try {
+            $conexao = Conexao::getConexao();
+            $stmt = $conexao->prepare("SELECT COUNT(*) as qtde FROM produtos WHERE nome = ? AND id != ?");
+            $stmt->execute([$nome, $id]);
 
             return $stmt->fetchColumn();
         } catch (Exception $e) {
