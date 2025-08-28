@@ -1,52 +1,41 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import axios from "axios";
 
-function CadUsuario(props) {
-    const [usuarios, setUsuarios] = useState([]);
+function CadUsuario({onCadastro, usuarios}) {
+
     const [nome, setNome] = useState("");
-    const [email, setEmail] = useState("");
 
-    const buscaUsuarios = async () =>{
-        try {
-            const response = await axios.get("http://localhost:5173/backend/usuario.php");
-            setUsuarios(response.data);
-        } catch (error) {
-            console.error("Erro ao buscar usuários: ", error);
-        }
-    }
+    const cadastroUsuario = async (e) => {
+        e.preventDefault();
 
-    useEffect(() => {
-        buscaUsuarios();
-    }, []);
-
-    const cadastroUsuario = async () => {
-        if(usuarios.some(u => u.email === email)){
-            alert("Este E-mail já está cadastrado!");
+        const usuarioExistente = Array.isArray(usuarios) && usuarios.some(u => u.nome === nome);
+        if (usuarioExistente) {
+            alert("Usuário já existe!");
             return;
         }
 
         try {
-            const novoUsuario = {nome, email};
-            const response = await axios.post("http://localhost:5173/backend/usuario.php", novoUsuario);
-            setUsuarios([...usuarios, response.data]);
+            const novoUsuario = { nome };
+            await axios.post("http://localhost:3000/usuarios", novoUsuario);
+
             setNome("");
-            setEmail("");
+            onCadastro(); 
         } catch (error) {
-            console.log("Erro ao casdastrar usuario: ", erro);
+            console.log("Erro ao cadastrar usuário: ", error);
+            alert("Erro ao cadastrar usuário.");
         }
     };
 
     return(
         <div>
             <h2>Casdastrar Usuário</h2>
-
-            <label>Nome: </label>
-            <input type="text" placeholder="Nome" value={nome} onChange={(e) => setNome(e.target.value)}/>
-            <br /><br />
-            <label>Email: </label>
-            <input type="text" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)}/>
-            <br /><br />
-            <button onClick={cadastroUsuario}>Cadastrar</button>
+            <form onSubmit={cadastroUsuario}>
+                <label>Nome: </label>
+                <input type="text" placeholder="Nome" value={nome} onChange={(e) => setNome(e.target.value)} required/>
+                <br/><br/>
+                <br/><br/>
+                <input type="submit" value="Cadastrar" name="cadastrar"/>
+            </form>
         </div>
     )
 }
