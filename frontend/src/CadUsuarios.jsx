@@ -1,5 +1,6 @@
 import {useState} from "react";
 import axios from "axios";
+import './CadUsuarios.css'
 
 function CadUsuario({onCadastro, usuarios}) {
 
@@ -27,16 +28,20 @@ function CadUsuario({onCadastro, usuarios}) {
     };
 
     return(
-        <div>
-            <h2>Casdastrar Usuário</h2>
-            <form onSubmit={cadastroUsuario}>
-                <label>Nome: </label>
-                <input type="text" placeholder="Nome" value={nome} onChange={(e) => setNome(e.target.value)} required/>
-                <br/><br/>
-                <br/><br/>
-                <input type="submit" value="Cadastrar" name="cadastrar"/>
-            </form>
-        </div>
+        <div className="cadastro-container">
+
+        <h3>Cadastrar Usuário</h3>
+        <hr/>
+
+        <form onSubmit={cadastroUsuario} className="cadastro-form">
+            <div className="field">
+                <label htmlFor="nome" className="label">Nome</label>
+                <input id="nome" type="text" placeholder="Digite o nome" value={nome} onChange={(e) => setNome(e.target.value)}/>
+            </div>
+
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
     )
 }
 

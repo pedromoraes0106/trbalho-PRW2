@@ -1,0 +1,19 @@
+.usuarios-table td button {
+  background: #dc3545;       
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.usuarios-table td button:hover {
+  background: #a71d2a;
+  transform: translateY(-1px);
+}
+
+.usuarios-table td button:active {
+  transform: translateY(1px);
+}

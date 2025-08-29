@@ -9,7 +9,7 @@ function App() {
 
     const buscaUsuarios = async () =>{
         try {
-            const response = await axios.get("http://localhost:5173/backend/usuario.php");
+            const response = await axios.get("http://localhost:3000/usuarios");
             setUsuarios(response.data);
         } catch (error) {
             console.error("Erro ao buscar usuários: ", error);
@@ -20,20 +20,23 @@ function App() {
         buscaUsuarios();
     }, []);
 
-
-    function cadastrar(){
-      buscaUsuarios();
-    }
-
   return (
-    <>
-      <h1>Seja bem vindo!</h1>
-      <p>Desenvolva seu website usando React!</p>
+    <div className='app-container'>
+      <header className="app-header">
+        <h1>Seja bem vindo! <span className="brand">MVP Store</span></h1>
+      </header>
 
-      <CadUsuarios onCadastro={cadastrar}></CadUsuarios>
+       <main className="app-main">
+        <section className="card">
+          <CadUsuarios onCadastro={buscaUsuarios} lista={usuarios} />
+        </section>
 
-      <ListaUsuarios listaUsuarios={usuarios}></ListaUsuarios>
-    </>
+        <section className="card">
+          <ListaUsuarios usuarios={usuarios} onRemove={buscaUsuarios}/>
+        </section>
+
+        </main>
+    </div>
   )
 }
 
