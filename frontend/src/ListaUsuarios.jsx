@@ -1,5 +1,4 @@
 import Usuarios from './Usuarios'
-import './ListaUsuarios.css'
 
 function ListaUsuarios({usuarios, onRemove}) {
 

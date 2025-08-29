@@ -1,4 +1,3 @@
-import './Usuarios.css'
 import axios from 'axios';
 
 function Usuarios({id, nome, onRemove}) {

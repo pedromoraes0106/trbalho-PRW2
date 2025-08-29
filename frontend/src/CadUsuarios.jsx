@@ -1,6 +1,5 @@
 import {useState} from "react";
 import axios from "axios";
-import './CadUsuarios.css'
 
 function CadUsuario({onCadastro, usuarios}) {
 
@@ -31,7 +30,6 @@ function CadUsuario({onCadastro, usuarios}) {
         <div className="cadastro-container">
 
         <h3>Cadastrar Usuário</h3>
-        <hr/>
 
         <form onSubmit={cadastroUsuario} className="cadastro-form">
             <div className="field">

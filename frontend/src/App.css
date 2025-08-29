@@ -1,54 +1,131 @@
-body{
-  margin: 0px;
-  padding: 0px; 
+:root {
+  --bg-dark: #0a0a0f;
+  --bg-card: rgba(30, 30, 50, 0.8);
+  --text-primary: #e0e0ff;
+  --accent-pink: #ff2b70;
+  --accent-cyan: #00fff7;
+  --accent-purple: #9d4edd;
+  --accent-yellow: #ffea00;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Orbitron", "Roboto", sans-serif;
+}
+
+body {
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
 }
 
 .app-container {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  min-height: 100vh;
-  background: #f4f6f9;
-  color: #333;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .app-header {
-  width: 100%;
-  background: #007bff;
-  color: white;
-  padding: 20px;
   text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  margin-bottom: 2rem;
 }
 
 .app-header h1 {
-  margin: 0;
-  font-size: 1.8rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  text-shadow: 0 0 8px var(--accent-cyan), 0 0 16px var(--accent-pink);
 }
 
 .brand {
-  font-weight: bold;
-  color: #ffd43b;
-}
-
-.app-main {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-  max-width: 600px;
-  width: 100%;
-  padding: 30px 20px;
+  color: var(--accent-pink);
+  text-shadow: 0 0 8px var(--accent-pink), 0 0 16px var(--accent-purple);
 }
 
 .card {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  transition: transform 0.2s;
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 
+    0 0 10px rgba(0, 255, 247, 0.2),
+    0 0 20px rgba(255, 43, 112, 0.25),
+    inset 0 0 20px rgba(157, 78, 221, 0.2);
+  backdrop-filter: blur(6px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card h2 {
+  font-size: 1.4rem;
+  color: var(--accent-yellow);
+  text-shadow: 0 0 6px var(--accent-yellow), 0 0 12px var(--accent-pink);
+  margin-bottom: 1.5rem;
 }
 
 .card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 
+    0 0 20px rgba(0, 255, 247, 0.5),
+    0 0 30px rgba(255, 43, 112, 0.4),
+    inset 0 0 25px rgba(157, 78, 221, 0.3);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+thead {
+  background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink));
+}
+
+thead th {
+  padding: 0.75rem;
+  text-align: left;
+  font-size: 0.9rem;
+  color: white;
+  text-shadow: 0 0 4px black;
+}
+
+tbody td {
+  padding: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+button {
+  background: var(--accent-pink);
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  background: var(--accent-yellow);
+  box-shadow: 0 0 10px var(--accent-cyan), 0 0 20px var(--accent-pink);
+}
+
+input, select {
+  background: rgba(20, 20, 40, 0.9);
+  border: 1px solid var(--accent-purple);
+  border-radius: 6px;
+  color: white;
+  padding: 0.5rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 8px var(--accent-cyan);
 }
