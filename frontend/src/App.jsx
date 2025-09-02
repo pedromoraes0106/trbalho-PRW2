@@ -28,10 +28,19 @@ function App() {
       console.error("Erro ao buscar produtos: ", error);
     }
   };
+  const buscaCompras = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/compras");
+      setCompras(response.data);
+    } catch (error) {
+      console.error("Erro ao buscar compras: ", error);
+    }
+  };
 
   useEffect(() => {
     buscaUsuarios();
     buscaProdutos();
+    buscaCompras();
   }, []);
 
   return (
@@ -56,7 +65,15 @@ function App() {
         </section>
 
         <section className="card">
-          <ListaProdutos produtos={produtos} onRemove={buscaProdutos}></ListaProdutos>
+          <ListaProdutos produtos={produtos} onRemove={buscaProdutos}/>
+        </section>
+
+        <section className="card">
+          <CadCompras onCadastro={ListaCompras} usuarios={usuarios} produtos={produtos}/>
+        </section>
+
+        <section className="card">
+          <ListaCompras produtos={produtos} onRemove={buscaCompras}/>
         </section>
       </main>
     </div>
