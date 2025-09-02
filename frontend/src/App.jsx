@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import logo from "./assets/MVP-STORE.png";
 import CadUsuarios from "./CadUsuarios";
 import CadProdutos from "./CadProdutos";
 import ListaUsuarios from "./ListaUsuarios";
@@ -37,9 +38,7 @@ function App() {
   return (
     <div className="app-container">
       <header className="app-header">
-        <h1>
-          Seja bem vindo! <span className="brand">MVP Store</span>
-        </h1>
+        <img src={logo} alt="MVP Store" className="logo"/>
       </header>
 
       <main className="app-main">
@@ -56,7 +55,10 @@ function App() {
         </section>
 
         <section className="card">
-          <ListaProdutos produtos={produtos} onRemove={buscaProdutos}></ListaProdutos>
+          <ListaProdutos
+            produtos={produtos}
+            onRemove={buscaProdutos}
+          ></ListaProdutos>
         </section>
       </main>
     </div>
