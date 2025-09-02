@@ -1,6 +1,6 @@
 import Produtos from "./Produtos";
 
-function ListaProdutos({ produtos, onRemove }) {
+function ListaProdutos({ produtos, onRemove, onRemoveU }) {
   if (!produtos || produtos.length === 0) {
     return (
       <div>
@@ -23,8 +23,8 @@ function ListaProdutos({ produtos, onRemove }) {
           </tr>
         </thead>
         <tbody>
-          {produtos.map((u) => (
-            <Produtos key={u.id} id={u.id} nome={u.nome} preco={u.preco} onRemove={onRemove} />
+          {produtos.map((p) => (
+            <Produtos key={p.id} id={p.id} nome={p.nome} preco={p.preco} onRemove={onRemove} onRemoveU={onRemoveU} />
           ))}
         </tbody>
       </table>

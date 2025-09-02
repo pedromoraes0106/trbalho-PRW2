@@ -1,11 +1,12 @@
 import axios from 'axios';
 
-function Produtos({id, nome, preco, onRemove}) {
+function Produtos({id, nome, preco, onRemove, onRemoveU}) {
 
     const removeProduto = async () => {        
         try {
             await axios.delete('http://localhost:3000/produtos/' + id);
             onRemove();
+            onRemoveU();
             
         } catch (error) {
             console.log("Erro ao remover produto: ", error);
@@ -16,7 +17,7 @@ function Produtos({id, nome, preco, onRemove}) {
         <tr>
             <td>{id}</td>
             <td>{nome}</td>
-            <td>{preco}</td>
+            <td>R$ {preco.toFixed(2)}</td>
             <td><button onClick={removeProduto}>Deletar</button></td>
         </tr>
     )

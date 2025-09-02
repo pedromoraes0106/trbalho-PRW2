@@ -6,6 +6,8 @@ import CadProdutos from "./CadProdutos";
 import ListaUsuarios from "./ListaUsuarios";
 import ListaProdutos from "./ListaProdutos";
 import axios from "axios";
+import CadCompras from "./CadCompras";
+import EditarProdutos from "./EditarProdutos";
 
 function App() {
   const [usuarios, setUsuarios] = useState([]);
@@ -29,19 +31,11 @@ function App() {
       console.error("Erro ao buscar produtos: ", error);
     }
   };
-  const buscaCompras = async () => {
-    try {
-      const response = await axios.get("http://localhost:3000/compras");
-      setCompras(response.data);
-    } catch (error) {
-      console.error("Erro ao buscar compras: ", error);
-    }
-  };
+
 
   useEffect(() => {
     buscaUsuarios();
     buscaProdutos();
-    buscaCompras();
   }, []);
 
   return (
@@ -51,32 +45,34 @@ function App() {
       </header>
 
       <main className="app-main">
-        <section className="card">
-          <CadUsuarios onCadastro={buscaUsuarios} lista={usuarios} />
-        </section>
+        <div className="container-left">
+            <section className="card">
+              <CadUsuarios onCadastro={buscaUsuarios} lista={usuarios} />
+            </section>
 
-        <section className="card">
-          <ListaUsuarios usuarios={usuarios} onRemove={buscaUsuarios} />
-        </section>
+            <section className="card">
+              <CadCompras onCadastro={buscaUsuarios} usuarios={usuarios} produtos={produtos}/>
+            </section>
 
-        <section className="card">
-          <CadProdutos onCadastro={buscaProdutos} lista={produtos} />
-        </section>
+            <section className="card lista">
+              <ListaUsuarios usuarios={usuarios} onRemove={buscaUsuarios} onAtualiza={buscaUsuarios}/>
+            </section>
+        </div>          
+      
+        <div className="container-right">
+          <section className="card">
+            <CadProdutos onCadastro={buscaProdutos} lista={produtos} />
+          </section>
 
-        <section className="card">
-          <ListaProdutos
-            produtos={produtos}
-            onRemove={buscaProdutos}
-          />
-        </section>
+          <section className="card">
+            <EditarProdutos produtos={produtos} onAtualizaP={buscaProdutos} onAtualizaU={buscaUsuarios}/>
+          </section>
 
-        <section className="card">
-          <CadCompras onCadastro={ListaCompras} usuarios={usuarios} produtos={produtos}/>
-        </section>
-
-        <section className="card">
-          <ListaCompras produtos={produtos} onRemove={buscaCompras}/>
-        </section>
+          <section className="card lista">
+            <ListaProdutos produtos={produtos} onRemove={buscaProdutos} onRemoveU={buscaUsuarios}/>
+          </section>
+        </div>
+        
       </main>
     </div>
   );

@@ -34,30 +34,13 @@ function CadProdutos({ onCadastro, produtos }) {
 
       <form onSubmit={cadastroProdutos} className="cadastro-form">
         <div className="field">
-          <label htmlFor="nome" className="label">
-            Nome do Produto
-          </label>
-          <input
-            id="nome"
-            type="text"
-            placeholder="Digite o nome do produto"
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
-          />
+          <label htmlFor="nome" className="label">Nome do Produto</label>
+          <input id="nome" type="text" placeholder="Digite o nome do produto" value={nome} onChange={(e) => setNome(e.target.value)} required/>
         </div>
 
         <div className="field">
-          <label htmlFor="preco" className="label">
-            Preço
-          </label>
-          <input
-            id="preco"
-            type="number"
-            step="0.01"
-            placeholder="Digite o preço"
-            value={preco}
-            onChange={(e) => setPreco(e.target.value)}
-          />
+          <label htmlFor="preco" className="label">Preço</label>
+          <input id="preco" type="number" step="0.01" placeholder="Digite o preço" value={preco} onChange={(e) => setPreco(e.target.value)} required/>
         </div>
 
         <button type="submit">Cadastrar</button>

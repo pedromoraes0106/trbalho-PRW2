@@ -63,4 +63,6 @@ if (method("DELETE")) {
         output($e->getCode(), ["msg" => $e->getMessage()]);
     }
 }
+
+
 output(200, ["msg" => "Operação inválida"]);
