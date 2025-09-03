@@ -43,10 +43,10 @@ body {
   margin: 0 auto;
 }
 
-/* Layout principal */
+
 .app-main {
   display: flex;
-  gap: 3rem; /* espaçamento maior entre colunas */
+  gap: 3rem;
   flex-wrap: wrap;
 }
 
@@ -55,10 +55,10 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 2rem; /* espaçamento maior entre cards */
+  gap: 2rem; 
 }
 
-/* Cards */
+
 .card {
   background: var(--bg-card);
   border-radius: 12px;
@@ -67,7 +67,7 @@ body {
   box-shadow: 0 6px 18px rgba(33, 49, 79, 0.06);
   transition: transform 0.18s ease, box-shadow 0.18s ease;
 
-  min-height: 180px; /* altura mínima padrão */
+  min-height: 180px;
   display: flex;
   flex-direction: column;
 }
@@ -77,9 +77,9 @@ body {
   box-shadow: 0 10px 30px rgba(33, 49, 79, 0.09);
 }
 
-/* Card especial para listas */
+
 .card.lista {
-  min-height: 320px; /* maior para tabelas/listas */
+  min-height: 320px; 
 }
 
 .card h3 {
@@ -89,7 +89,6 @@ body {
   margin-bottom: 1rem;
 }
 
-/* Formulários */
 .cadastro-form {
   display: flex;
   flex-direction: column;
@@ -143,7 +142,6 @@ button:hover {
   transform: translateY(-2px);
 }
 
-/* Tabelas */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -174,7 +172,6 @@ tbody td {
   color: var(--text-primary);
 }
 
-/* Lista de compras como badges */
 .compras-list {
   display: flex;
   flex-wrap: wrap;
@@ -191,7 +188,6 @@ tbody td {
   font-weight: 500;
 }
 
-/* Responsividade */
 @media (max-width: 1200px) {
   .app-main {
     flex-direction: column;
