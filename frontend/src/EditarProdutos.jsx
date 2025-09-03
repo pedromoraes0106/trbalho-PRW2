@@ -45,12 +45,12 @@ function EditarProdutos({produtos, onAtualizaP, onAtualizaU}) {
 
             <div>
                 <label htmlFor="nome">Novo nome</label>
-                <input type="text" id="nome" value={nome} placeholder="Digite nome" onChange={(e) => setNome(e.target.value)} required/>
+                <input type="text" id="nome" value={nome} placeholder="Digite o novo nome" onChange={(e) => setNome(e.target.value)} required/>
             </div>
 
             <div>
                 <label htmlFor="preco">Novo preço</label>
-                <input id="preco" type="number" step="0.01" placeholder="Digite o preço" value={preco} onChange={(e) => setPreco(Number(e.target.value))} required/>    
+                <input id="preco" type="number" step="0.01" value={preco} onChange={(e) => setPreco(Number(e.target.value))} required/>    
             </div>
 
           <button type="submit">Editar</button>

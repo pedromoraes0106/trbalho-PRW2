@@ -1,4 +1,4 @@
-import Produtos from "./Produtos";
+import Produto from "./Produto";
 
 function ListaProdutos({ produtos, onRemove, onRemoveU }) {
   if (!produtos || produtos.length === 0) {
@@ -24,7 +24,7 @@ function ListaProdutos({ produtos, onRemove, onRemoveU }) {
         </thead>
         <tbody>
           {produtos.map((p) => (
-            <Produtos key={p.id} id={p.id} nome={p.nome} preco={p.preco} onRemove={onRemove} onRemoveU={onRemoveU} />
+            <Produto key={p.id} id={p.id} nome={p.nome} preco={p.preco} onRemove={onRemove} onRemoveU={onRemoveU} />
           ))}
         </tbody>
       </table>

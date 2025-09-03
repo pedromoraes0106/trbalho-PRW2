@@ -1,4 +1,4 @@
-import Usuarios from './Usuarios'
+import Usuario from './Usuario'
 
 function ListaUsuarios({usuarios, onRemove, onAtualiza}) {
 
@@ -26,7 +26,7 @@ function ListaUsuarios({usuarios, onRemove, onAtualiza}) {
                 </thead>
                 <tbody>
                     {usuarios.map((u) => (
-                        <Usuarios key={u.id} id={u.id} nome={u.nome} compras={u.produtos || []} onRemove={onRemove} onAtualiza={onAtualiza}/>
+                        <Usuario key={u.id} id={u.id} nome={u.nome} compras={u.produtos || []} onRemove={onRemove} onAtualiza={onAtualiza}/>
                     ))}
                 </tbody>           
             </table>
